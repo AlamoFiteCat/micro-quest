@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 4rem;
+  margin-bottom: 6.5rem;
+
+  // [Border]
+  // border-bottom: 1px solid transparent;
+  // border-image: linear-gradient(to left, $color-dark, $color-primary-dark) 30
+  //   stretch;
+
+  // background: rgb(34, 47, 62);
+  // background: linear-gradient(
+  //   45deg,
+  //   rgba(34, 47, 62, 1) 0%,
+  //   rgb(73, 22, 22) 100%
+  // );
+  color: $color-primary-dark;
+  font-family: "Pirata One", cursive;
+
+  &__brand {
+    cursor: pointer;
+    color: white;
+    animation: neon 1.5s ease-in-out infinite alternate;
+  }
+
+  &__navigation-list {
+    list-style: none;
+    display: flex;
+  }
+
+  &__navigation-list-item {
+    & > a {
+      color: $color-primary-dark;
+      font-size: $font-size-large;
+      text-decoration: none;
+      padding: 1.5rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    & > a.active {
+      color: white;
+      animation: neon 1.5s ease-in-out infinite alternate;
+    }
+
+    & > a:hover {
+      color: white;
+      cursor: pointer;
+      animation: neon 1.5s ease-in-out infinite alternate;
+    }
+  }
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 1px $color-secondary-dark, 0 0 2px $color-secondary-dark,
+      0 0 3px $color-secondary-dark, 0 0 4px $color-primary-dark,
+      0 0 7px $color-primary-dark, 0 0 8px $color-primary-dark,
+      0 0 10px $color-primary-dark, 0 0 15px $color-primary-dark;
+  }
+  to {
+    text-shadow: 0 0 1px $color-secondary-dark, 0 0 1px $color-secondary-dark,
+      0 0 1.5px $color-secondary-dark, 0 0 2px $color-primary-dark,
+      0 0 3.5px $color-primary-dark, 0 0 4px $color-primary-dark,
+      0 0 5px $color-primary-dark, 0 0 7.5px $color-primary-dark;
+  }
+}

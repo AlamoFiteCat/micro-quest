@@ -1,0 +1,27 @@
+<div class="hero-card" *ngIf="!!hero">
+  <div class="hero-card__header">
+    <p class="hero-card__header-name">{{ hero?.name }}</p>
+    <p class="hero-card__header-level">Level: {{ hero?.level }}</p>
+    <p class="hero-card__header-primary-stat">
+      Primary Stat: {{ hero?.primaryStat }}
+    </p>
+    <p class="hero-card__header-story">
+      {{ hero?.story }}
+    </p>
+  </div>
+  <div class="hero-card__content">
+    <p class="hero-card__content-title">Primary Stats</p>
+    <p>Health: {{ hero?.health }}</p>
+    <p>Current Health: {{ hero?.currentHealth }}</p>
+    <p>Armor: {{ hero?.armor }}</p>
+    <p>Strength: {{ hero?.strength }}</p>
+    <p>Dexterity: {{ hero?.dexterity }}</p>
+    <p>Intelligence: {{ hero?.intelligence }}</p>
+    <p>Charisma: {{ hero?.charisma }}</p>
+    <p class="hero-card__content-title">Secondary Stats</p>
+    <p>Critical: {{ hero?.critical }}</p>
+    <p>Haste: {{ hero?.haste }}</p>
+    <p>Versatility: {{ hero?.versatility }}</p>
+    <p>Mastery: {{ hero?.mastery }}</p>
+  </div>
+</div>

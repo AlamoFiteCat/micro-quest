@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="hero-container">
+    <div
+      (click)="onSelectHero(hero?.name)"
+      class="hero"
+      *ngFor="let hero of heroList"
+    >
+      <div class="hero__overlay"></div>
+      <img [src]="hero.picture" alt="hero-picture" class="hero__image" />
+      <h3 class="hero__name text-large">{{ hero?.name }}</h3>
+    </div>
+
+    <div class="hero" routerLink="create">
+      <div class="hero__overlay"></div>
+      <img
+        src="https://firebasestorage.googleapis.com/v0/b/micro-quest.appspot.com/o/new-hero-picture.png?alt=media&token=457e3f2c-1ce3-4111-89d2-b2e2c39a584c"
+        alt="new-hero-picture"
+        class="hero__image"
+      />
+      <h3 class="hero__name text-large">New Hero</h3>
+    </div>
+  </div>
+  <div class="hero-page">
+    <app-hero-page [hero]="selectedHero"></app-hero-page>
+  </div>
+</div>

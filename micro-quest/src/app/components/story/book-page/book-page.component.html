@@ -1,0 +1,14 @@
+<div class="chapter-container">
+  <div class="chapter-page">
+    <div
+      class="chapter-card text-large"
+      (click)="onSelectChapter(chapter?.id)"
+      *ngFor="let chapter of chapters"
+    >
+      <div class="chapter-card__overlay"></div>
+      <img [src]="chapter?.picture" alt="" class="chapter-card__picture" />
+      <div class="chapter-card__title">{{ chapter?.name }}</div>
+    </div>
+  </div>
+  <app-chapter-page [chapterQuests]="quests"></app-chapter-page>
+</div>

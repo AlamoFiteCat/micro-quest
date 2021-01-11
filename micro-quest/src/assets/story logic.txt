@@ -1,0 +1,41 @@
+Story
+------
+
+- Books (An entire adventure)
+- Chapters (Adventure campaigns)
+- Quests (Scenarios within a campaign)
+
+-------------------------------------------
+Quest Object:
+
+- ID: string
+- Book: string
+- Chapter: string
+- Title: string
+- Pages: array
+- Reward
+
+Page Object:
+
+- Quest: string
+- Number: number
+- Text: string
+- Encounter: Object
+
+Encounter Object:
+
+- Title
+- Type
+- Health?
+- Damage?
+
+=========================================================
+Story Module
+
+/stories
+
+- StoryPage ('') [It holds cards of all the books]
+- ChaptersPage ('/storyID') [Holds cards of all the chapters for that book]
+- QuestsPage ('/storyID/QuestID') [A card that will lead you through the quest]
+
+

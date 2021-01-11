@@ -1,0 +1,46 @@
+.quest-container {
+  width: 44rem;
+  padding: 2rem;
+
+  background: rgb(34, 47, 62);
+  background: linear-gradient(
+    45deg,
+    rgba(34, 47, 62, 1) 0%,
+    rgb(73, 22, 22) 100%
+  );
+
+  opacity: 0.75;
+  backdrop-filter: blur(2px);
+}
+
+.quest-list {
+  list-style: none;
+  color: $color-primary-light;
+  font-family: "Pirata One", "cursive";
+
+  &__item {
+    border-bottom: 1px solid rgba($color: $color-primary-dark, $alpha: 0.35);
+    transition: all 0.3s ease-in-out;
+    z-index: 2000;
+    &:hover {
+      color: white;
+      cursor: pointer;
+      animation: neon 1.5s ease-in-out infinite alternate;
+    }
+  }
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 1px $color-secondary-dark, 0 0 2px $color-secondary-dark,
+      0 0 3px $color-secondary-dark, 0 0 4px $color-primary-dark,
+      0 0 7px $color-primary-dark, 0 0 8px $color-primary-dark,
+      0 0 10px $color-primary-dark, 0 0 15px $color-primary-dark;
+  }
+  to {
+    text-shadow: 0 0 1px $color-secondary-dark, 0 0 1px $color-secondary-dark,
+      0 0 1.5px $color-secondary-dark, 0 0 2px $color-primary-dark,
+      0 0 3.5px $color-primary-dark, 0 0 4px $color-primary-dark,
+      0 0 5px $color-primary-dark, 0 0 7.5px $color-primary-dark;
+  }
+}

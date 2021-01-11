@@ -1,0 +1,169 @@
+<div class="card">
+  <div class="card__header">
+    <div class="card__header-title text-large">New Hero</div>
+    <div class="card__header-subtitle text-medium">
+      Embark on a new adventure!
+    </div>
+  </div>
+  <form [formGroup]="heroForm" (ngSubmit)="onHeroSubmit()">
+    <div class="card__content">
+      <!-- hero name -->
+      <div class="form-input-group">
+        <input
+          type="text"
+          id="hero-name"
+          class="form-input-field"
+          formControlName="heroName"
+          required
+        />
+        <label class="form-input-label" for="hero-name">Hero Name</label>
+      </div>
+      <!-- hero picture link -->
+      <div class="form-input-group">
+        <input
+          type="text"
+          id="hero-picture"
+          class="form-input-field"
+          formControlName="heroPicture"
+          required
+        />
+        <label class="form-input-label" for="hero-picture">Hero Picture</label>
+      </div>
+
+      <div class="form-input-group">
+        <select
+          class="form-input-field select-input"
+          formControlName="heroPrimaryStat"
+        >
+          <option value="" disabled selected>Primary Stat</option>
+          <option value="strength">Strength</option>
+          <option value="dexterity">Dexterity</option>
+          <option value="intelligence">Intelligence</option>
+        </select>
+      </div>
+
+      <!-- character stats -->
+      <p class="text-medium">Hero Points: {{ heroPoints }}</p>
+
+      <!-- strength -->
+      <div class="form-input-group-progress">
+        <label for="hero-strength">Strength</label>
+        <div class="progress-container">
+          <progress
+            class="form-input-progress progress-strength"
+            id="hero-strength"
+            [value]="strength"
+            max="15"
+          ></progress>
+          <button
+            type="button"
+            class="btn btn-add-remove"
+            (click)="onChangeStat('strength', 'remove')"
+          >
+            -
+          </button>
+          <button
+            type="button"
+            class="btn btn-add-remove"
+            (click)="onChangeStat('strength', 'add')"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <!-- dexterity -->
+      <div class="form-input-group-progress">
+        <label for="hero-dexterity">Dexterity</label>
+        <div class="progress-container">
+          <progress
+            class="form-input-progress progress-dexterity"
+            id="hero-dexterity"
+            [value]="dexterity"
+            max="15"
+          ></progress>
+          <button
+            type="button"
+            class="btn btn-add-remove"
+            (click)="onChangeStat('dexterity', 'remove')"
+          >
+            -
+          </button>
+          <button
+            type="button"
+            class="btn btn-add-remove"
+            (click)="onChangeStat('dexterity', 'add')"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <!-- intelligence -->
+      <div class="form-input-group-progress">
+        <label for="hero-intelligence">Intelligence</label>
+        <div class="progress-container">
+          <progress
+            class="form-input-progress progress-intelligence"
+            id="hero-intelligence"
+            [value]="intelligence"
+            max="15"
+          ></progress>
+          <button
+            type="button"
+            class="btn btn-add-remove"
+            (click)="onChangeStat('intelligence', 'remove')"
+          >
+            -
+          </button>
+          <button
+            type="button"
+            class="btn btn-add-remove"
+            (click)="onChangeStat('intelligence', 'add')"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <!-- charisma  -->
+      <div class="form-input-group-progress">
+        <label for="hero-charisma">Charisma</label>
+        <div class="progress-container">
+          <progress
+            class="form-input-progress progress-charisma"
+            id="hero-charisma"
+            [value]="charisma"
+            max="15"
+          ></progress>
+          <button
+            type="button"
+            class="btn btn-add-remove"
+            (click)="onChangeStat('charisma', 'remove')"
+          >
+            -
+          </button>
+          <button
+            type="button"
+            class="btn btn-add-remove"
+            (click)="onChangeStat('charisma', 'add')"
+          >
+            +
+          </button>
+        </div>
+      </div>
+      <!-- backstory -->
+      <div class="form-input-group">
+        <textarea
+          formControlName="heroBackstory"
+          id="hero-backstory"
+          cols="30"
+          rows="15"
+          class="form-input-field"
+          required
+        ></textarea>
+        <label for="hero-backstory" class="form-input-label">Backstory</label>
+      </div>
+    </div>
+    <div class="card__actions">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+  </form>
+</div>

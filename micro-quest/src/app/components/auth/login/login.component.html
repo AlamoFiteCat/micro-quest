@@ -1,0 +1,35 @@
+<div class="card">
+  <div class="card__header">
+    <h1 class="card__header-title text-huge">Login</h1>
+    <h2 class="card__header-subtitle text-large">
+      Please enter your email and password below...
+    </h2>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="onLoginUser()">
+    <div class="card__content">
+      <div class="form-input-group">
+        <input
+          type="text"
+          class="form-input-field"
+          id="login-email"
+          required
+          formControlName="email"
+        />
+        <label for="login-email" class="form-input-label">Email</label>
+      </div>
+      <div class="form-input-group">
+        <input
+          type="password"
+          formControlName="password"
+          id="login-password"
+          class="form-input-field"
+          required
+        />
+        <label for="login-password" class="form-input-label">Password</label>
+      </div>
+    </div>
+    <div class="card__actions">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
+</div>

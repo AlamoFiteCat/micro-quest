@@ -1,0 +1,75 @@
+<div class="quest-article-container">
+  <div class="quest-article">
+    <div class="quest-article__title text-large pirata">
+      {{ questName }}
+    </div>
+    <div class="quest-article__page-text text-medium">
+      {{ pageText }}
+    </div>
+
+    <!-- encounter article -->
+    <div class="encounter-article" *ngIf="currentEncounter">
+      <div class="encounter-article__header">
+        <!-- PLAYER -->
+        <div class="encounter-article__header--player">
+          <div class="encounter-article__header-name text-medium pirata">
+            {{ currentHero?.name }}
+          </div>
+          <div class="form-input-group-progress health-progress">
+            <div class="progress-container">
+              <progress
+                class="form-input-progress progress-strength"
+                id="hero-strength"
+                [value]="currentHero.currentHealth"
+                [max]="currentHero?.health"
+              ></progress>
+            </div>
+          </div>
+          <img
+            [src]="currentHero?.picture"
+            alt="hero-picture"
+            class="encounter-article__header-image"
+          />
+        </div>
+
+        <!-- ENEMY -->
+        <div class="encounter-article__header--enemy">
+          <div class="encounter-article__header-name text-medium pirata">
+            {{ currentEncounter.name }}
+          </div>
+          <div class="form-input-group-progress health-progress">
+            <div class="progress-container">
+              <progress
+                class="form-input-progress progress-strength"
+                id="hero-strength"
+                [value]="encounterCurrentHealth"
+                [max]="currentEncounter.health"
+              ></progress>
+            </div>
+          </div>
+          <img
+            [src]="currentEncounter?.picture"
+            alt="enemy-picture"
+            class="encounter-article__header-image"
+          />
+        </div>
+      </div>
+      <div class="encounter-article__action">
+        <button class="btn btn-primary" (click)="onPlayerAction()">
+          Attack!
+        </button>
+      </div>
+    </div>
+
+    <button
+      style="margin-right: 1rem"
+      class="btn btn-primary"
+      (click)="onPagesControl('previous')"
+    >
+      Previous
+    </button>
+    <button class="btn btn-primary" (click)="onPagesControl('next')">
+      Next
+    </button>
+  </div>
+</div>

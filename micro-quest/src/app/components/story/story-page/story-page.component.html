@@ -1,0 +1,11 @@
+<div class="story-page">
+  <div
+    routerLink="book/{{ book?.id }}"
+    class="book-card"
+    *ngFor="let book of bookList"
+  >
+    <div class="book-card__title text-large">{{ book?.name }}</div>
+    <div class="book-card__overlay"></div>
+    <img [src]="book?.picture" alt="book-picture" class="book-card__picture" />
+  </div>
+</div>

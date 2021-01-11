@@ -1,0 +1,67 @@
+.container {
+  display: flex;
+}
+
+.hero-page {
+  margin-top: 4rem;
+}
+
+.hero-card {
+  width: 54rem;
+  margin: 0px auto;
+  padding: 2rem 4.5rem;
+  color: $color-primary-dark;
+  background: rgb(34, 47, 62);
+  background: linear-gradient(
+    45deg,
+    rgba(34, 47, 62, 0.65) 0%,
+    rgb(73, 22, 22, 0.7) 100%
+  );
+  backdrop-filter: blur(3px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba($color: $color-primary-dark, $alpha: 0.2);
+
+  &__header {
+    font-size: $font-size-medium;
+    color: $color-primary-dark;
+
+    &-name {
+      font-size: $font-size-large;
+      font-family: "Pirata One", cursive;
+      color: white;
+      animation: neon 1.5s ease-in-out infinite alternate;
+      border-bottom: 1px solid rgba($color: $color-primary-dark, $alpha: 0.2);
+      margin-bottom: 3rem;
+    }
+
+    &-story {
+      margin-bottom: 3rem;
+      margin-top: 1rem;
+    }
+  }
+
+  &__content {
+    font-size: $font-size-medium;
+
+    &-title {
+      font-family: "Pirata One", cursive;
+      border-bottom: 1px solid rgba($color: $color-primary-dark, $alpha: 0.2);
+      margin: 1rem 0rem;
+    }
+  }
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 1px $color-secondary-dark, 0 0 2px $color-secondary-dark,
+      0 0 3px $color-secondary-dark, 0 0 4px $color-primary-dark,
+      0 0 7px $color-primary-dark, 0 0 8px $color-primary-dark,
+      0 0 10px $color-primary-dark, 0 0 15px $color-primary-dark;
+  }
+  to {
+    text-shadow: 0 0 1px $color-secondary-dark, 0 0 1px $color-secondary-dark,
+      0 0 1.5px $color-secondary-dark, 0 0 2px $color-primary-dark,
+      0 0 3.5px $color-primary-dark, 0 0 4px $color-primary-dark,
+      0 0 5px $color-primary-dark, 0 0 7.5px $color-primary-dark;
+  }
+}

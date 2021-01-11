@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card__header">
+    <h1 class="card__header-title text-huge">Register</h1>
+    <h2 class="card__header-subtitle text-large">
+      Please enter your register credentials below...
+    </h2>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onRegisterUser()">
+    <div class="card__content">
+      <div class="form-input-group">
+        <input
+          class="form-input-field"
+          type="text"
+          formControlName="email"
+          id="register-email"
+          autocomplete="off"
+          required
+        />
+        <label for="register-email" class="form-input-label">Email</label>
+      </div>
+      <div class="form-input-group">
+        <input
+          class="form-input-field"
+          type="text"
+          formControlName="username"
+          id="register-username"
+          autocomplete="off"
+          required
+        />
+        <label for="register-username" class="form-input-label">Username</label>
+      </div>
+      <div class="form-input-group">
+        <input
+          class="form-input-field"
+          type="password"
+          formControlName="password"
+          id="register-password"
+          required
+        />
+        <label for="register-password" class="form-input-label">Password</label>
+      </div>
+    </div>
+    <div class="card__actions">
+      <button class="btn btn-primary">Register</button>
+    </div>
+  </form>
+</div>

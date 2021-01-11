@@ -1,0 +1,43 @@
+=========================
+armor: 10
+health: 12
+
+=========================
+strength (HP and DMG if main)
+dexterity (ARMOR and DMG if main)
+intelligence (MANA and DMG if main)
+charisma (non-combat encounter power)
+
+All stats begin at 10
+15
+13
+10
+12
+
+Max stat can be 15 right now
+Divide 10 points
+
+=========================
+critical: 0
+haste: 0
+versatility: 0
+mastery: 0
+
+=========================
+picture:
+story:
+
+=========================
+f_dead: false
+
+-------------------------
+What the hero enters
+
+- Name
+- Backstory
+- Picture
+
+Strength
+Dexterity
+Intelligence
+Charisma

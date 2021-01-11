@@ -1,0 +1,51 @@
+// [Pirata Font]
+// font-family: 'Pirata One', cursive;
+@import url("https://fonts.googleapis.com/css2?family=Pirata+One&display=swap");
+
+// [Rubik Font]
+// font-family: 'Rubik', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Pirata+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.pirata {
+  font-family: "Pirata One", cursive;
+}
+
+// [Heading 6]
+.text-tiny {
+  font-size: $font-size-tiny;
+}
+
+// [heading 5]
+.text-small {
+  font-size: $font-size-small;
+}
+
+// [Heading 4 and normal text]
+.text-medium {
+  font-size: $font-size-medium;
+}
+
+// [Heading 3]
+.text-large {
+  font-size: $font-size-large;
+  font-weight: 200;
+}
+
+// [Heading 2]
+.text-huge {
+  font-size: $font-size-huge;
+  font-weight: 200;
+}
+
+// [Heading 1]
+.text-gargauntan {
+  font-size: $font-size-gargauntan;
+}
+
+.text-colossal {
+  font-size: $font-size-colossal;
+}
+
+html {
+  font-family: "Rubik", sans-serif;
+}

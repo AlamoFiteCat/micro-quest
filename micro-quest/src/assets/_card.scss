@@ -1,0 +1,150 @@
+.card {
+  max-width: 54rem;
+  margin: 0px auto;
+  padding: 2rem 4.5rem;
+  color: $color-primary-dark;
+  background: rgb(34, 47, 62);
+  background: linear-gradient(
+    45deg,
+    rgba(34, 47, 62, 0.65) 0%,
+    rgb(73, 22, 22, 0.7) 100%
+  );
+  backdrop-filter: blur(3px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border: 1px solid rgba($color: $color-primary-dark, $alpha: 0.2);
+
+  &__content {
+    font-size: $font-size-medium;
+    margin-bottom: 2.4rem;
+    margin-top: 4.4rem;
+  }
+
+  &__header {
+    font-family: "Pirata One", cursive;
+  }
+}
+
+.form-input-field {
+  padding: 1.2rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid $color-primary-dark;
+  color: $color-light;
+  font-size: $font-size-medium;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus ~ label,
+  &:valid ~ label {
+    top: -2rem;
+    color: $color-secondary-dark;
+  }
+}
+
+.form-input-group {
+  position: relative;
+  &:not(:last-child) {
+    margin-bottom: 4.4rem;
+  }
+}
+
+.form-input-group-progress {
+  position: relative;
+  &:not(:last-child) {
+    margin-bottom: 4.4rem;
+  }
+  display: flex;
+  flex-direction: column;
+}
+
+.form-input-label {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.5rem;
+  transition: 0.2s ease all;
+}
+
+.form-input-progress {
+  appearance: none;
+  border: 1px solid rgba($color: $color-primary-dark, $alpha: 0.2);
+  margin-right: 1rem;
+
+  width: 50%;
+
+  &::-webkit-progress-bar {
+    background: transparent;
+  }
+
+  &::-webkit-progress-value {
+    background-image: -webkit-linear-gradient(
+        -45deg,
+        transparent 33%,
+        rgba(0, 0, 0, 0.1) 33%,
+        rgba(0, 0, 0, 0.1) 66%,
+        transparent 66%
+      ),
+      -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+      -webkit-linear-gradient(left, $color-primary-light, $color-primary-dark);
+  }
+}
+
+.progress-dexterity {
+  &::-webkit-progress-value {
+    background-image: -webkit-linear-gradient(
+        -45deg,
+        transparent 33%,
+        rgba(0, 0, 0, 0.1) 33%,
+        rgba(0, 0, 0, 0.1) 66%,
+        transparent 66%
+      ),
+      -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+      -webkit-linear-gradient(left, $color-green-light, $color-green-dark);
+  }
+}
+
+.progress-intelligence {
+  &::-webkit-progress-value {
+    background-image: -webkit-linear-gradient(
+        -45deg,
+        transparent 33%,
+        rgba(0, 0, 0, 0.1) 33%,
+        rgba(0, 0, 0, 0.1) 66%,
+        transparent 66%
+      ),
+      -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+      -webkit-linear-gradient(left, $color-blue-light, $color-blue-dark);
+  }
+}
+
+.progress-charisma {
+  &::-webkit-progress-value {
+    background-image: -webkit-linear-gradient(
+        -45deg,
+        transparent 33%,
+        rgba(0, 0, 0, 0.1) 33%,
+        rgba(0, 0, 0, 0.1) 66%,
+        transparent 66%
+      ),
+      -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+      -webkit-linear-gradient(left, $color-secondary-light, $color-secondary-dark);
+  }
+}
+
+progress {
+  margin-top: 0.5rem;
+}
+
+textarea {
+  resize: none;
+}
+
+.select-input {
+  color: $color-primary-dark;
+}
+
+option {
+  background-color: $color-dark;
+}

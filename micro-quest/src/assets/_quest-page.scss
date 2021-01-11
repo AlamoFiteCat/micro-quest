@@ -1,0 +1,47 @@
+.quest-article-container {
+  padding: 1rem 4rem;
+  color: $color-primary-light;
+}
+
+.quest-article {
+  padding: 1rem 2.5rem;
+  background: rgb(34, 47, 62);
+  background: linear-gradient(
+    45deg,
+    rgba(34, 47, 62, 1) 0%,
+    rgb(73, 22, 22) 100%
+  );
+
+  opacity: 0.75;
+  backdrop-filter: blur(2px);
+  width: 96rem;
+  margin: 0 auto;
+
+  &__title {
+    border-bottom: 1px solid rgba($color: $color-primary-dark, $alpha: 0.55);
+    margin-bottom: 1rem;
+  }
+
+  &__page-text {
+    margin-bottom: 1.6rem;
+    color: $color-light;
+    height: 16rem;
+  }
+}
+
+.encounter-article {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 65%;
+    margin: 0 auto;
+
+    &-image {
+      width: 22rem;
+    }
+  }
+  &__action {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,79 @@
+.chapter-container {
+  display: flex;
+}
+
+.chapter-page {
+  padding: 1rem 4rem;
+  width: 98rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.chapter-card {
+  width: 28rem;
+  height: 38rem;
+  margin-bottom: 2rem;
+  position: relative;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:not(:last-child) {
+    margin-right: 2rem;
+  }
+
+  &__picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    font-family: "Pirata One", cursive;
+    color: $color-primary-dark;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__overlay {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    background-color: rgba($color: $color-dark, $alpha: 0.55);
+    position: absolute;
+  }
+
+  &:hover > .chapter-card__title {
+    color: white;
+    cursor: pointer;
+    animation: neon 1.5s ease-in-out infinite alternate;
+    z-index: 1000;
+  }
+
+  &:hover > .chapter-card__overlay {
+    background-color: rgba($color: $color-dark, $alpha: 0.3);
+    cursor: pointer;
+  }
+
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+}
+
+@keyframes neon {
+  from {
+    text-shadow: 0 0 1px $color-secondary-dark, 0 0 2px $color-secondary-dark,
+      0 0 3px $color-secondary-dark, 0 0 4px $color-primary-dark,
+      0 0 7px $color-primary-dark, 0 0 8px $color-primary-dark,
+      0 0 10px $color-primary-dark, 0 0 15px $color-primary-dark;
+  }
+  to {
+    text-shadow: 0 0 1px $color-secondary-dark, 0 0 1px $color-secondary-dark,
+      0 0 1.5px $color-secondary-dark, 0 0 2px $color-primary-dark,
+      0 0 3.5px $color-primary-dark, 0 0 4px $color-primary-dark,
+      0 0 5px $color-primary-dark, 0 0 7.5px $color-primary-dark;
+  }
+}
