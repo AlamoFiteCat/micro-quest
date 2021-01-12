@@ -6,15 +6,21 @@ import { Book } from '../interfaces/book';
 import { ToastrService } from 'ngx-toastr';
 import { Chapter } from '../intefaces/chapter';
 import { Quest } from '../intefaces/quest';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StoryService {
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   bookList = new Subject<Book[]>();
   chapterList = new Subject<Chapter[]>();
   questList = new Subject<Quest[]>();
+  questAvailable = new Subject<boolean>();
 
   fetchAllBooks(): Subscription {
     return this.http
@@ -65,6 +71,44 @@ export class StoryService {
         },
         (response) => {
           this.toastr.error(response.error.message, 'Error!');
+        }
+      );
+  }
+
+  startQuestProgression(questId: string, heroId: string): Subscription {
+    return this.http
+      .post(
+        `${environment.apiUrl}/story/startQuest`,
+        { quest: questId, hero: heroId },
+        { withCredentials: true }
+      )
+      .subscribe(
+        (data: { code: number; message: string }) => {
+          if (data.code === 200) {
+            this.toastr.success('Quest started!', 'Success!');
+            this.questAvailable.next(true);
+          }
+        },
+        (response) => {
+          this.questAvailable.next(false);
+          this.toastr.error(response.error.message, 'Error!');
+        }
+      );
+  }
+
+  endQuestProgression(questId: string, heroId: string): Subscription {
+    return this.http
+      .post(
+        `${environment.apiUrl}/story/endQuest`,
+        { quest: questId, hero: heroId },
+        { withCredentials: true }
+      )
+      .subscribe(
+        (data) => {
+          this.router.navigate(['story']);
+        },
+        (response) => {
+          console.log(response);
         }
       );
   }

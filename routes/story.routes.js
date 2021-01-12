@@ -37,6 +37,37 @@ router.get('/chapter/:chapterId', (req, res) => {
   }
 });
 
+// [Starts a new story progression]
+router.post('/startQuest', (req, res) => {
+  if (req.session.user) {
+    sc.startQuest(req.body.quest, req.body.hero)
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((error) => {
+        res.status(error.code).json({
+          message: error.message,
+        });
+      });
+  }
+});
+
+// [End a quest]
+router.post('/endQuest', (req, res) => {
+  if (req.session.user) {
+    sc.endQuest(req.body.quest, req.body.hero)
+      .then((data) => {
+        res.status(200).json(data);
+      })
+      .catch((error) => {
+        res.status(error.code).json({
+          message: error.message,
+        });
+      });
+  }
+});
+
+// [Initial GET. Gets all books.]
 router.get('/', (req, res) => {
   if (req.session.user.username) {
     sc.getAllBooks()

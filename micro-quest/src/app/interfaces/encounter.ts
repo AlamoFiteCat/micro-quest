@@ -9,4 +9,5 @@ export interface Encounter {
   expReward: number;
   picture: string;
   difficultyModifier: number;
+  weapon: string;
 }

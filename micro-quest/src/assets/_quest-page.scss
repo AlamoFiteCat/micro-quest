@@ -49,9 +49,10 @@
 }
 
 .combat-log {
-  height: 6rem;
+  height: 8rem;
   width: 36rem;
   color: whitesmoke;
   overflow-y: scroll;
   border: 1px solid rgba($color: $color-primary-dark, $alpha: 0.55);
+  margin-top: 1rem;
 }

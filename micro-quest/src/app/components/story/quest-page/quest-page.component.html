@@ -67,16 +67,30 @@
         </div>
       </div>
     </div>
-
     <button
       style="margin-right: 1rem"
       class="btn btn-primary"
       (click)="onPagesControl('previous')"
+      #prevBtn
+      *ngIf="!lastPage"
     >
       Previous
     </button>
-    <button class="btn btn-primary" (click)="onPagesControl('next')">
+    <button
+      class="btn btn-primary"
+      (click)="onPagesControl('next')"
+      #nextBtn
+      *ngIf="!lastPage"
+    >
       Next
+    </button>
+    <button
+      class="btn btn-primary"
+      (click)="onQuestEnd()"
+      #endQuestBtn
+      *ngIf="lastPage"
+    >
+      End Quest
     </button>
   </div>
 </div>

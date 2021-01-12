@@ -1,15 +1,18 @@
 <div class="quest-container" *ngIf="!!chapterQuests">
-  <ul class="quest-list">
-    <li
-      class="quest-list__item text-large"
-      *ngFor="let quest of chapterQuests"
-      routerLink="/story/quest/{{ quest?.id }}"
-      [state]="{ quest: quest, hero: currentHero }"
-    >
-      {{ quest.name }}
-    </li>
-  </ul>
   <form [formGroup]="heroSelectionForm">
+    <div class="form-input-group">
+      <select
+        id="quest-select"
+        formControlName="selectedQuest"
+        class="form-input-field select-input"
+      >
+        <option *ngFor="let quest of chapterQuests" [value]="quest?.id">
+          {{ quest?.name }}
+        </option>
+      </select>
+      <label class="text-medium" for="quest-select">Select your quest!</label>
+    </div>
+
     <div class="form-input-group">
       <select
         class="form-input-field select-input"
@@ -23,8 +26,15 @@
       <label class="text-medium" for="hero-select">Select your hero!</label>
     </div>
 
-    <button (click)="onLockChoice()" class="btn btn-primary">
+    <button
+      (click)="onLockChoice()"
+      class="btn btn-primary"
+      *ngIf="!choiceLocked"
+    >
       Lock Choice
     </button>
   </form>
+  <button (click)="onStartQuest()" class="btn btn-primary" *ngIf="choiceLocked">
+    Start Adventure
+  </button>
 </div>

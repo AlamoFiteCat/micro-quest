@@ -16,5 +16,6 @@ export interface Hero {
   health?: number;
   f_dead?: boolean;
   level?: number;
+  weapon?: string;
   user?: string;
 }
