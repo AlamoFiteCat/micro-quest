@@ -17,6 +17,7 @@ export class QuestPageComponent implements OnInit {
   currentEncounter: Encounter;
   currentHero: Hero;
   encounterCurrentHealth: number;
+  combatLog: [];
 
   constructor() {}
 
@@ -85,5 +86,11 @@ export class QuestPageComponent implements OnInit {
     }
 
     // [Combat Resolution]
+
+    if (this.currentHero.currentHealth <= 0) {
+    }
+
+    if (this.encounterCurrentHealth) {
+    }
   }
 }

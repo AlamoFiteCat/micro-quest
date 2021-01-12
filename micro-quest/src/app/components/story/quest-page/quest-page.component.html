@@ -58,6 +58,13 @@
         <button class="btn btn-primary" (click)="onPlayerAction()">
           Attack!
         </button>
+        <div class="combat-log">
+          <ul class="combat-log__list">
+            <li *ngFor="let log of combatLog" class="combat-log__list-item">
+              {{ log }}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
