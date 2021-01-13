@@ -49,6 +49,18 @@
       margin: 1rem 0rem;
     }
   }
+
+  &__inventory {
+    list-style: none;
+  }
+
+  &__inventory-item {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
 }
 
 @keyframes neon {

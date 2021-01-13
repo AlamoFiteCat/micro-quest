@@ -23,6 +23,7 @@ export class HeroCreateComponent implements OnInit {
     heroPicture: new FormControl('', Validators.required),
     heroBackstory: new FormControl('', Validators.required),
     heroPrimaryStat: new FormControl('', Validators.required),
+    heroWeapon: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {
@@ -40,6 +41,7 @@ export class HeroCreateComponent implements OnInit {
       heroPicture,
       heroBackstory,
       heroPrimaryStat,
+      heroWeapon,
     } = this.heroForm.value;
     const newHero: Hero = {
       name: heroName,
@@ -50,6 +52,7 @@ export class HeroCreateComponent implements OnInit {
       intelligence: this.intelligence,
       charisma: this.charisma,
       primaryStat: heroPrimaryStat,
+      weapon: heroWeapon,
     };
 
     this.heroes.createNewHero(newHero);

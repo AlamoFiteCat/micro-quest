@@ -17,8 +17,8 @@ class StoryController {
     return sm.startQuestWithHero(questId, heroId);
   }
 
-  endQuest(questId, heroId) {
-    return sm.endQuestWithHero(questId, heroId);
+  endQuest(questId, heroId, status) {
+    return sm.endQuestWithHero(questId, heroId, status);
   }
 }
 

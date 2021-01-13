@@ -18,6 +18,7 @@ export class HeroListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.heroListSubscription = this.heroes.heroList.subscribe((data) => {
       this.heroList = data;
+      console.log(this.heroList);
     });
     this.heroes.fetchHeroesForCurrentUser();
   }

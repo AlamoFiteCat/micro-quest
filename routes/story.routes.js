@@ -55,7 +55,7 @@ router.post('/startQuest', (req, res) => {
 // [End a quest]
 router.post('/endQuest', (req, res) => {
   if (req.session.user) {
-    sc.endQuest(req.body.quest, req.body.hero)
+    sc.endQuest(req.body.quest, req.body.hero, req.body.status)
       .then((data) => {
         res.status(200).json(data);
       })

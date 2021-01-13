@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { Hero } from '../interfaces/hero';
+import { Reward } from '../interfaces/reward';
 
 @Injectable({
   providedIn: 'root',
@@ -42,6 +43,27 @@ export class HeroesService {
         () => {
           this.fetchHeroesForCurrentUser();
           this.router.navigate(['heroes']);
+        },
+        (response) => {
+          this.toastr.error(response.error.message, 'Error!');
+        }
+      );
+  }
+
+  updateHeroAfterCombat(
+    heroId: string,
+    heroHealth: number,
+    encounterReward: Reward
+  ): Subscription {
+    return this.http
+      .put(
+        `${environment.apiUrl}/heroes/afterCombat`,
+        { hero: heroId, health: heroHealth, reward: encounterReward },
+        { withCredentials: true }
+      )
+      .subscribe(
+        (data) => {
+          this.toastr.info('Combat finished!', 'Info');
         },
         (response) => {
           this.toastr.error(response.error.message, 'Error!');

@@ -10,4 +10,5 @@ export interface Encounter {
   picture: string;
   difficultyModifier: number;
   weapon: string;
+  itemReward?: string; // [Item ID]
 }

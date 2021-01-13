@@ -121,8 +121,7 @@ class StoryModel {
     });
   }
 
-  endQuestWithHero(questId, heroId) {
-    console.log(questId, heroId);
+  endQuestWithHero(questId, heroId, questStatus) {
     return new Promise((resolve, reject) => {
       process.firebase
         .firestore()
@@ -142,7 +141,7 @@ class StoryModel {
                 .collection('progression')
                 .doc(progression.id)
                 .update({
-                  status: 1,
+                  status: questStatus,
                 })
                 .then(() => {
                   resolve({

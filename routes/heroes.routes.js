@@ -31,4 +31,21 @@ router.post('/create', (req, res) => {
     });
 });
 
+router.put('/afterCombat', (req, res) => {
+  if (req.session.user) {
+    hc.updateHeroAfterCombat(req.body.hero, req.body.health, req.body.reward)
+      .then(() => {
+        res.status(200).json({
+          message: 'Hero updated!',
+        });
+      })
+      .catch((error) => {
+        const errorObject = errorHandler('firestore', error);
+        res.status(errorObject.code).json({
+          message: errorObject.message,
+        });
+      });
+  }
+});
+
 module.exports = router;

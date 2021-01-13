@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Quest } from 'src/app/intefaces/quest';
+import { Quest } from 'src/app/interfaces/quest';
 import { Hero } from 'src/app/interfaces/hero';
 import { HeroesService } from 'src/app/services/heroes.service';
 import { StoryService } from 'src/app/services/story.service';

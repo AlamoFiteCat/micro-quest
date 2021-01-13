@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Book } from '../interfaces/book';
 import { ToastrService } from 'ngx-toastr';
-import { Chapter } from '../intefaces/chapter';
-import { Quest } from '../intefaces/quest';
+import { Chapter } from '../interfaces/chapter';
+import { Quest } from '../interfaces/quest';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -96,15 +96,19 @@ export class StoryService {
       );
   }
 
-  endQuestProgression(questId: string, heroId: string): Subscription {
+  endQuestProgression(
+    questId: string,
+    heroId: string,
+    questStatus: number
+  ): Subscription {
     return this.http
       .post(
         `${environment.apiUrl}/story/endQuest`,
-        { quest: questId, hero: heroId },
+        { quest: questId, hero: heroId, status: questStatus },
         { withCredentials: true }
       )
       .subscribe(
-        (data) => {
+        () => {
           this.router.navigate(['story']);
         },
         (response) => {

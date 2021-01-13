@@ -9,6 +9,10 @@ class HeroesController {
   createHeroForPlayer(hero, user) {
     return hm.createNewHeroForPlayer(hero, user);
   }
+
+  updateHeroAfterCombat(hero, health, reward) {
+    return hm.updateHeroAfterCombat(hero, health, reward);
+  }
 }
 
 module.exports = HeroesController;

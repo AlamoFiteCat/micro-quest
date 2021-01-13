@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Quest } from 'src/app/intefaces/quest';
+import { Quest } from 'src/app/interfaces/quest';
 import { StoryService } from 'src/app/services/story.service';
-import { Chapter } from '../../../intefaces/chapter';
+import { Chapter } from '../../../interfaces/chapter';
 
 @Component({
   selector: 'app-book-page',

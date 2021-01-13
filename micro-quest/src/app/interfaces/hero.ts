@@ -1,3 +1,5 @@
+import { Item } from './item';
+
 export interface Hero {
   name: string;
   picture: string;
@@ -14,8 +16,9 @@ export interface Hero {
   mastery?: number;
   armor?: number;
   health?: number;
-  f_dead?: boolean;
   level?: number;
   weapon?: string;
   user?: string;
+  experience?: number;
+  gear?: Item[];
 }

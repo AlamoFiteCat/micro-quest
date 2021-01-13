@@ -23,5 +23,15 @@
     <p>Haste: {{ hero?.haste }}</p>
     <p>Versatility: {{ hero?.versatility }}</p>
     <p>Mastery: {{ hero?.mastery }}</p>
+    <p class="hero-card__content-title">Inventory</p>
+    <ul class="hero-card__inventory">
+      <li class="hero-card__inventory-item" *ngFor="let item of hero.gear">
+        {{ item.name }}
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </li>
+    </ul>
   </div>
 </div>

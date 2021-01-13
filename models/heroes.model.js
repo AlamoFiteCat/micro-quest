@@ -30,7 +30,6 @@ class HeroesModel {
           charisma: hero.charisma,
           critical: 0,
           dexterity: hero.dexterity,
-          f_dead: false,
           haste: 0,
           health: 12,
           intelligence: hero.intelligence,
@@ -43,6 +42,8 @@ class HeroesModel {
           strength: hero.strength,
           user: heroUser,
           versatility: 0,
+          weapon: hero.weapon,
+          experience: 0,
         })
         .then((response) => {
           resolve(response);
@@ -50,6 +51,56 @@ class HeroesModel {
         .catch((error) => {
           reject(error);
         });
+    });
+  }
+
+  updateHeroAfterCombat(hero, health, reward) {
+    return new Promise(async (resolve, reject) => {
+      const xp = reward.experienceReward;
+      const item = reward.itemReward;
+      let itemReward;
+
+      if (item) {
+        const heroRef = await process.firebase
+          .firestore()
+          .collection('heroes')
+          .doc(hero)
+          .get();
+        const heroData = heroRef.data();
+        const heroGearArray = heroData.gear;
+        const heroExperience = heroData.experience + xp;
+        heroGearArray.push({ ...itemReward, equipped: false });
+
+        process.firebase
+          .firestore()
+          .collection('heroes')
+          .doc(hero)
+          .update({
+            experience: heroExperience,
+            currentHealth: health,
+            gear: heroGearArray,
+          })
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      } else {
+        process.firebase
+          .firestore()
+          .collection('heroes')
+          .doc(hero)
+          .update({
+            currentHealth: health,
+          })
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      }
     });
   }
 }
