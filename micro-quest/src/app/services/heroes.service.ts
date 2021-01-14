@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { Hero } from '../interfaces/hero';
 import { Reward } from '../interfaces/reward';
+import { Item } from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root',
@@ -64,6 +65,24 @@ export class HeroesService {
       .subscribe(
         (data) => {
           this.toastr.info('Combat finished!', 'Info');
+        },
+        (response) => {
+          this.toastr.error(response.error.message, 'Error!');
+        }
+      );
+  }
+
+  lockHeroEquipment(heroId: string, heroEquipment: Item[]): Subscription {
+    return this.http
+      .put(
+        `${environment.apiUrl}/heroes/lockEquipment`,
+        { hero: heroId, equipment: heroEquipment },
+        { withCredentials: true }
+      )
+      .subscribe(
+        () => {
+          this.toastr.info('Hero equipment updated!');
+          this.router.navigate(['heroes']);
         },
         (response) => {
           this.toastr.error(response.error.message, 'Error!');

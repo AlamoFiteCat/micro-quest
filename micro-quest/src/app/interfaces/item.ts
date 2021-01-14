@@ -1,4 +1,6 @@
 export interface Item {
+  itemId: string;
+
   strength: number;
   dexterity: number;
   intelligence: number;
@@ -13,4 +15,6 @@ export interface Item {
   armor?: number;
   slot?: string;
   type: string;
+
+  equipped?: boolean;
 }

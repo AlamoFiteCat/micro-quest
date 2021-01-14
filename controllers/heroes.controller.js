@@ -13,6 +13,10 @@ class HeroesController {
   updateHeroAfterCombat(hero, health, reward) {
     return hm.updateHeroAfterCombat(hero, health, reward);
   }
+
+  lockHeroEquipment(hero, equipment) {
+    return hm.lockHeroEquipment(hero, equipment);
+  }
 }
 
 module.exports = HeroesController;

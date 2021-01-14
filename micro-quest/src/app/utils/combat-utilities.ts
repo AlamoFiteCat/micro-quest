@@ -1,3 +1,6 @@
+import { Encounter } from '../interfaces/encounter';
+import { Hero } from '../interfaces/hero';
+
 export const combatLogResolver = (
   attackerName: string,
   weapon: string,
@@ -38,4 +41,39 @@ export const combatLogResolver = (
     effect += ` ${attackerName} is victorious!`;
   }
   return attackerName + action + effect;
+};
+
+export const calculateHeroCombat = (hero: Hero, encounter: Encounter) => {
+  const heroPrimaryModifier = Math.floor((hero[hero.primaryStat] - 10) / 2);
+  let heroDamage = 0;
+  const heroAttack = Math.floor(Math.random() * 20) + 1 + heroPrimaryModifier;
+
+  if (heroAttack >= encounter.armor) {
+    heroDamage = Math.floor(Math.random() * 6) + 1 + heroPrimaryModifier;
+  }
+
+  return {
+    heroAttack,
+    heroDamage,
+  };
+};
+
+export const calculateEnemyCombat = (hero: Hero, encounter: Encounter) => {
+  const heroArmor = hero.armor + Math.floor((hero.dexterity - 10) / 2);
+
+  const enemyAttack =
+    Math.floor(Math.random() * 20) + 1 + encounter.difficultyModifier;
+  let enemyDamage = 0;
+  if (enemyAttack >= heroArmor) {
+    enemyDamage =
+      Math.floor(Math.random() * encounter.damage) +
+      1 +
+      encounter.difficultyModifier;
+  }
+
+  return {
+    enemyAttack,
+    enemyDamage,
+    heroArmor,
+  };
 };

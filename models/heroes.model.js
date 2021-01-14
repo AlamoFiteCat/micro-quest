@@ -55,12 +55,20 @@ class HeroesModel {
   }
 
   updateHeroAfterCombat(hero, health, reward) {
+    console.log(hero, health, reward);
     return new Promise(async (resolve, reject) => {
       const xp = reward.experienceReward;
       const item = reward.itemReward;
       let itemReward;
 
       if (item) {
+        const itemRef = await process.firebase
+          .firestore()
+          .collection('items')
+          .doc(item)
+          .get();
+        itemReward = itemRef.data();
+
         const heroRef = await process.firebase
           .firestore()
           .collection('heroes')
@@ -101,6 +109,24 @@ class HeroesModel {
             reject(error);
           });
       }
+    });
+  }
+
+  lockHeroEquipment(hero, equipment) {
+    return new Promise((resolve, reject) => {
+      process.firebase
+        .firestore()
+        .collection('heroes')
+        .doc(hero)
+        .update({
+          gear: equipment,
+        })
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
     });
   }
 }

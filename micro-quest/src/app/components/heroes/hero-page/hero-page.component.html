@@ -26,12 +26,78 @@
     <p class="hero-card__content-title">Inventory</p>
     <ul class="hero-card__inventory">
       <li class="hero-card__inventory-item" *ngFor="let item of hero.gear">
-        {{ item.name }}
+        <div class="hero-card__inventory-item-title">
+          {{ item.name }}
+        </div>
         <label class="switch">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            (click)="onEquipItem(item?.itemId)"
+            [checked]="item.equipped"
+          />
           <span class="slider round"></span>
         </label>
+        <div class="item-popup text-small">
+          <div class="item-popup__general">
+            <div class="item-popup__general-textual">
+              <p class="item-popup__general-textual-title">
+                {{ item?.name }}
+              </p>
+              <p class="item-popup__general-textual-slot text-yellow-light">
+                {{ item?.slot }}
+              </p>
+            </div>
+            <img
+              [src]="item?.icon"
+              alt="item-icon"
+              class="item-popup__general-icon"
+            />
+          </div>
+          <div class="item-popup__main-stats">
+            <p *ngIf="item?.armor > 0">
+              Armor: <span class="item-popup__value">{{ item?.armor }}</span>
+            </p>
+            <p *ngIf="item?.strength > 0">
+              Strength:
+              <span class="item-popup__value">{{ item?.strength }}</span>
+            </p>
+            <p *ngIf="item?.dexterity > 0">
+              Dexterity:
+              <span class="item-popup__value">{{ item.dexterity }}</span>
+            </p>
+            <p *ngIf="item?.intelligence > 0">
+              Intelligence:
+              <span class="item-popup__value">{{ item.intelligence }}</span>
+            </p>
+          </div>
+          <div class="item-popup__secondary-stats">
+            <p *ngIf="item?.critical > 0">
+              Critical:
+              <span class="item-popup__value">
+                {{ item?.critical }}
+              </span>
+            </p>
+            <p *ngIf="item?.haste > 0">
+              Haste: <span class="item-popup__value"> {{ item?.haste }} </span>
+            </p>
+            <p *ngIf="item?.versatility > 0">
+              <span class="item-popup__value">
+                Versatility:
+                {{ item?.versatility }}
+              </span>
+            </p>
+            <p *ngIf="item?.mastery > 0">
+              Mastery:
+              <span class="item-popup__value">
+                {{ item?.mastery }}
+              </span>
+            </p>
+          </div>
+        </div>
       </li>
     </ul>
+    <button (click)="onLockEqupment()" class="btn btn-primary">
+      Lock Equipment
+    </button>
   </div>
 </div>

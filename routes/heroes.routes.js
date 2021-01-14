@@ -48,4 +48,22 @@ router.put('/afterCombat', (req, res) => {
   }
 });
 
+router.put('/lockEquipment', (req, res) => {
+  console.log(req.body);
+  if (req.session.user) {
+    hc.lockHeroEquipment(req.body.hero, req.body.equipment)
+      .then(() => {
+        res.status(200).json({
+          message: 'Equipment updated!',
+        });
+      })
+      .catch((error) => {
+        const errorObject = errorHandler('firestore', error);
+        res.status(errorObject.code).json({
+          message: errorObject.message,
+        });
+      });
+  }
+});
+
 module.exports = router;

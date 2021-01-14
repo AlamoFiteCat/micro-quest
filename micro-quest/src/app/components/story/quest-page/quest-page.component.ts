@@ -5,7 +5,11 @@ import { QuestPage } from 'src/app/interfaces/quest-page';
 import { Reward } from 'src/app/interfaces/reward';
 import { HeroesService } from 'src/app/services/heroes.service';
 import { StoryService } from 'src/app/services/story.service';
-import { combatLogResolver } from '../../../utils/combat-utilities';
+import {
+  combatLogResolver,
+  calculateHeroCombat,
+  calculateEnemyCombat,
+} from '../../../utils/combat-utilities';
 
 @Component({
   selector: 'app-quest-page',
@@ -38,6 +42,7 @@ export class QuestPageComponent implements OnInit {
     this.questName = history.state.quest.name;
     this.currentHero = history.state.hero;
   }
+
   onPagesControl(control: string): void {
     if (control === 'next') {
       if (this.currentPageNumber < this.numberOfPages) {
@@ -52,7 +57,6 @@ export class QuestPageComponent implements OnInit {
         this.pageText = this.currentPage.pageText;
       }
     }
-
     if (!!this.currentPage.encounter) {
       this.currentEncounter = this.currentPage.encounter;
       this.encounterCurrentHealth = this.currentEncounter.health;
@@ -62,7 +66,6 @@ export class QuestPageComponent implements OnInit {
     } else {
       this.currentEncounter = undefined;
     }
-
     if (this.currentPage.lastPage) {
       this.lastPage = true;
     }
@@ -79,58 +82,39 @@ export class QuestPageComponent implements OnInit {
     }
     // [If player can still fight]
     else {
-      // [Hero Stats]
-      const heroPrimaryModifier = Math.floor(
-        (this.currentHero[this.currentHero.primaryStat] - 10) / 2
-      );
-      const heroArmor =
-        this.currentHero.armor +
-        Math.floor((this.currentHero.dexterity - 10) / 2);
-
-      // [Combat]
-      // 1. Hero Attack
-      const heroAttack =
-        Math.floor(Math.random() * 20) + 1 + heroPrimaryModifier;
-      let heroDamage = 0;
-      if (heroAttack >= this.currentEncounter.armor) {
-        heroDamage = Math.floor(Math.random() * 6) + 1 + heroPrimaryModifier;
-        this.encounterCurrentHealth -= heroDamage;
-      }
-
-      // [Log Hero Attack]
+      // [Hero Attack]
+      const heroCombatResult: {
+        heroAttack: number;
+        heroDamage: number;
+      } = calculateHeroCombat(this.currentHero, this.currentEncounter);
       const heroCombatLog = combatLogResolver(
         this.currentHero.name,
         this.currentHero.weapon,
-        heroAttack - this.currentEncounter.armor,
-        heroDamage,
+        heroCombatResult.heroAttack - this.currentEncounter.armor,
+        heroCombatResult.heroDamage,
         this.encounterCurrentHealth,
         this.currentEncounter.name
       );
+      this.encounterCurrentHealth -= heroCombatResult.heroDamage;
       this.combatLog.push(heroCombatLog);
 
-      // 2. Enemy Attack
-      const enemyAttack =
-        Math.floor(Math.random() * 20) +
-        1 +
-        this.currentEncounter.difficultyModifier;
-      let enemyDamage = 0;
-      if (enemyAttack >= heroArmor) {
-        enemyDamage =
-          Math.floor(Math.random() * this.currentEncounter.damage) +
-          1 +
-          this.currentEncounter.difficultyModifier;
-        this.currentHero.currentHealth -= enemyDamage;
-      }
-      // [Log Enemy Attack]
+      // [Enemy Attack]
+      const enemyCombatResult: {
+        enemyAttack: number;
+        enemyDamage: number;
+        heroArmor: number;
+      } = calculateEnemyCombat(this.currentHero, this.currentEncounter);
       const enemyCombatLog = combatLogResolver(
         this.currentEncounter.name,
         this.currentEncounter.weapon,
-        enemyAttack - heroArmor,
-        enemyDamage,
+        enemyCombatResult.enemyAttack - enemyCombatResult.heroArmor,
+        enemyCombatResult.enemyDamage,
         this.currentHero.currentHealth,
         this.currentHero.name
       );
       this.combatLog.push(enemyCombatLog);
+      this.currentHero.currentHealth -= enemyCombatResult.enemyDamage;
+
       // [End of Combat Scenario]
       if (
         this.currentHero.currentHealth <= 0 ||

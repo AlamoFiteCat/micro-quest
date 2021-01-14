@@ -37,6 +37,7 @@
     &-story {
       margin-bottom: 3rem;
       margin-top: 1rem;
+      min-height: 14rem;
     }
   }
 
@@ -60,6 +61,51 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 1rem;
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__inventory-item-title:hover ~ .item-popup {
+    display: block;
+  }
+}
+
+.item-popup {
+  width: 24rem;
+  min-height: 14rem;
+  background: $color-dark;
+  padding: 1rem;
+  border: 1px solid rgba($color: $color-primary-dark, $alpha: 0.2);
+  opacity: 0.95;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+  &__main-stats,
+  &__secondary-stats {
+    border-bottom: 1px solid rgba($color: $color-primary-dark, $alpha: 0.5);
+    padding: 1rem 0rem;
+  }
+
+  &__value {
+    color: $color-secondary-light;
+  }
+
+  &__general {
+    display: flex;
+    justify-content: space-between;
+
+    &-icon {
+      border-radius: 4px;
+    }
+  }
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+
+  &:hover {
+    display: block;
   }
 }
 
